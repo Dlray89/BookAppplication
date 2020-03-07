@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
+import { getData } from "./actions/axiosAction";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+function BookList(props) {
+  const handleData = e => {
+    e.preventDefault()
+    props.getData()
+  }
+
+  return(
+    <div>
+      <h1>BestSellers</h1>
+      {props.isFetchingData ? (
+        <div> We are grabbing your list</div>
+      ) : (
+        <p>Best Sellers</p>
+      )}
     </div>
-  );
+    
+  )
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isFetchingData: state.isFetchingData
+  }
+}
+
+export default connect(mapStateToProps,
+  { getData })(BookList)
