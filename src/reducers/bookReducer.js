@@ -1,8 +1,8 @@
 
 
 
-//export actions fro data call to server
-export { FETCH_DATA, UPDATE_BOOKS } from "../actions/axiosAction"
+//import actions fro data call to server
+import { FETCH_DATA, UPDATE_BOOKS } from "../actions"
 
 
 //set initialState here
@@ -21,7 +21,7 @@ export const bookReducer = (state = initialState, action) => {
                 isFetchingData:true,
                 books: []
             };
-            case UPDATE_DATA:
+            case UPDATE_BOOKS:
                 return {
                     ...state,
                     books: action.payload,

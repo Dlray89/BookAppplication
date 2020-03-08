@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getData } from "./actions/axiosAction";
+import { getData } from "./actions";
+import BookLists from "./components/bookList";
 
 
 function BookList(props) {
@@ -15,8 +16,9 @@ function BookList(props) {
       {props.isFetchingData ? (
         <div> We are grabbing your list</div>
       ) : (
-        <p>Best Sellers</p>
+        <a href="#" target="_Blank" onClick={handleData}>Best Sellers</a>
       )}
+              <BookLists />
     </div>
     
   )
