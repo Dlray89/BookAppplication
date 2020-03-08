@@ -16,7 +16,7 @@ function BookList(props) {
       {props.isFetchingData ? (
         <div> We are grabbing your list</div>
       ) : (
-        <a href="#" target="_Blank" onClick={handleData}>Best Sellers</a>
+        <button onClick={handleData}>Best Sellers</button>
       )}
               <BookLists />
     </div>
