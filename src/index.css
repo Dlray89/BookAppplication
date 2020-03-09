@@ -1,5 +1,9 @@
 body {
   margin: 0;
+  background-image: url("https://e5470651-e261-467d-bea7-500b6f83d9ae.ws-us02.gitpod.io/files/download/?id=cd09d835-8726-478d-a888-3d189b1b77ab");
+  background-size: cover;
+  background-position: center;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

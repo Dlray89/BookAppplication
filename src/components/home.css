@@ -1,0 +1,13 @@
+
+.mainContainer{
+    background: linear-gradient(to bottom, #544a7d, #ffd452);
+    border: solid 2px red;
+    border-radius: 30px;
+    width: 40%;
+    text-align: center;
+}
+
+.box{
+    width: 30%;
+    margin: 8% auto;
+}

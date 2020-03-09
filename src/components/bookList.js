@@ -1,32 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getData } from "../actions"
+import BookCard from "./BookCard";
+import {Link} from"react-router-dom";
 
+function BookList(props) {
+  const handleData = e => {
+    e.preventDefault()
+    props.getData()
+  }
 
-const bookLists = (props) => {
-    return(
-        <div style={{display: "flex",justifyContent: "space-between", flexWrap: "wrap", border: "solid 2px black", padding:"2%"}}>
-            {props.books.map(book => (
-                <div style={{border: " solid 2px red", width: "30%",textAlign: "center", padding: "1%", borderRadius:"30px"}}>
-                    <h1>
-                        {book.title}
-                    </h1>
-                    <p>Rank #{book.rank}
-                    <br />
-                    Author: {book.author}
-                    <br />
-                    Description: {book.description}</p>
-                    < img src={book.book_image} width={book.book_image_width} />
-                </div>
-            ))}
-        </div>
-    )
+  return(
+    <div>
+
+        <Link to="/dashboard">Home</Link>
+        <Link to="/dashboard">Add Book</Link>
+      <h1>BestSellers</h1>
+      {props.isFetchingData ? (
+        <div> We are grabbing your list</div>
+      ) : (
+        <button onClick={handleData}>Best Sellers</button>
+      )}
+              <BookCard />
+    </div>
+    
+  )
 }
 
 const mapStateToProps = state => {
-    return{
-        books: state.books
-
-    }
-
+  return {
+    isFetchingData: state.isFetchingData
+  }
 }
-export default connect(mapStateToProps, {})(bookLists)
+
+export default connect(mapStateToProps,
+  { getData })(BookList)

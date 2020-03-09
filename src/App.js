@@ -1,34 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
-import { getData } from "./actions";
-import BookLists from "./components/bookList";
+import { Route, Switch, Redirect } from "react-router-dom"
+import Registration from "./components/Register"
+import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import Booklist from "./components/bookList";
+import Home from "./components/Home"
 
 
-function BookList(props) {
-  const handleData = e => {
-    e.preventDefault()
-    props.getData()
-  }
+function App() {
+    return (
+        <>
+            <Switch>
+                 <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />               
+                <Route path="/register" component={Registration} />
+                <PrivateRoute exact path="/dashboard" component={Booklist} />
+                <Redirect from="/login" to="/dashboard" />
 
-  return(
-    <div>
-      <h1>BestSellers</h1>
-      {props.isFetchingData ? (
-        <div> We are grabbing your list</div>
-      ) : (
-        <button onClick={handleData}>Best Sellers</button>
-      )}
-              <BookLists />
-    </div>
-    
-  )
+
+            </Switch>
+        </>
+    )
 }
-
-const mapStateToProps = state => {
-  return {
-    isFetchingData: state.isFetchingData
-  }
-}
-
-export default connect(mapStateToProps,
-  { getData })(BookList)
+export default App;
